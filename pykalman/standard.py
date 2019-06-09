@@ -1165,17 +1165,14 @@ class KalmanFilter(object):
             self._initialize_parameters()
         )
 
-        (_, _, _, filtered_state_means,
-         filtered_state_covariances) = (
-            _filter(
-                transition_matrices, observation_matrices,
-                transition_covariance, observation_covariance,
-                transition_offsets, observation_offsets,
-                initial_state_mean, initial_state_covariance,
-                Z
-            )
+        return _filter(
+            transition_matrices, observation_matrices,
+            transition_covariance, observation_covariance,
+            transition_offsets, observation_offsets,
+            initial_state_mean, initial_state_covariance,
+            Z
         )
-        return (filtered_state_means, filtered_state_covariances)
+
 
     def filter_update(self, filtered_state_mean, filtered_state_covariance,
                       observation=None, transition_matrix=None,
